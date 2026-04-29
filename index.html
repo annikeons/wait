@@ -1,262 +1,460 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>wait</title>
+<link rel="shortcut icon" href="laicon.jpg" type="image/x-icon">
 
 <style>
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', sans-serif;
-    text-align: center;
-    overflow: hidden;
 
-    background: radial-gradient(circle at 20% 30%, #ffd6ec, transparent 40%),
-                radial-gradient(circle at 80% 70%, #cde7ff, transparent 40%),
-                linear-gradient(-45deg, #ffc2e2, #d6f0ff);
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Segoe UI',sans-serif;
+text-align:center;
+overflow:hidden;
 
-    animation: gradient 15s ease infinite;
+background:
+radial-gradient(circle at 15% 20%, #dff8d8 0%, transparent 35%),
+radial-gradient(circle at 80% 25%, #d7f4ff 0%, transparent 35%),
+radial-gradient(circle at 50% 80%, #edfbdc 0%, transparent 40%),
+linear-gradient(-45deg,#d4efc7,#dffaf3,#d7ecff,#f7fff2);
+
+background-size:400% 400%;
+animation:gradient 18s ease infinite;
 }
 
-@keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+@keyframes gradient{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
-/* Glow fondo */
-body::before {
-    content: "";
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: #ff9ad5;
-    filter: blur(120px);
-    opacity: 0.4;
-    top: 20%;
-    left: 20%;
-    z-index: 0;
+
+/* dreamy glows */
+body::before{
+content:"";
+position:absolute;
+width:420px;
+height:420px;
+background:#bfeeb8;
+filter:blur(150px);
+opacity:.45;
+top:10%;
+left:10%;
+z-index:0;
 }
 
-body::after {
-    content: "";
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: #a0d8ff;
-    filter: blur(120px);
-    opacity: 0.4;
-    bottom: 20%;
-    right: 20%;
-    z-index: 0;
+body::after{
+content:"";
+position:absolute;
+width:420px;
+height:420px;
+background:#c7ecff;
+filter:blur(150px);
+opacity:.45;
+bottom:10%;
+right:10%;
+z-index:0;
 }
 
-/* Card */
-.container {
-    position: relative;
-    z-index: 1;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 60px;
-    border-radius: 30px;
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255,255,255,0.4);
 
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.25),
-        inset 0 0 20px rgba(255,255,255,0.2);
 
-    transition: transform 0.6s ease, opacity 0.6s ease;
+/* CARD */
+.container{
+position:relative;
+z-index:1;
+
+background:rgba(255,255,255,.24);
+
+padding:75px;
+
+border-radius:42px;
+
+backdrop-filter:blur(35px);
+-webkit-backdrop-filter:blur(35px);
+
+border:1px solid rgba(255,255,255,.65);
+
+box-shadow:
+0 30px 80px rgba(90,140,90,.15),
+0 0 35px rgba(190,255,220,.4),
+0 0 70px rgba(220,245,255,.25),
+inset 0 1px 4px rgba(255,255,255,.8);
+
+animation:floatCard 5s ease-in-out infinite;
+transition:.6s;
 }
 
-.container:hover {
-    transform: scale(1.05);
+.container:hover{
+transform:scale(1.03);
 }
 
-h1 {
-    font-size: 2rem;
-    color: #ff69b4;
-    margin-bottom: 20px;
-    text-shadow: 0 0 12px rgba(255,105,180,0.6);
+@keyframes floatCard{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
 }
 
-#countdown {
-    font-size: 2.8rem;
-    font-weight: bold;
-    color: #5b9bd5;
-    text-shadow: 0 0 12px rgba(91,155,213,0.7);
+
+
+/* TÍTULO como el original pero más dreamy */
+h1{
+font-size:2.45rem;
+font-weight:700;
+line-height:1.45;
+letter-spacing:1px;
+margin-bottom:28px;
+
+color:#8ec88f;
+
+text-shadow:
+0 0 10px rgba(170,255,170,.55),
+0 0 20px rgba(145,235,255,.35),
+0 0 30px rgba(255,255,255,.35);
 }
 
-small {
-    display: block;
-    margin-top: 15px;
-    color: #555;
+
+
+/* COUNTDOWN estilo original glow */
+#countdown{
+font-size:3.2rem;
+font-weight:800;
+letter-spacing:2px;
+color:#72acd8;
+
+text-shadow:
+0 0 12px rgba(91,155,213,.7),
+0 0 25px rgba(170,230,255,.5);
 }
 
-/* Sparkles */
-.sparkle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: white;
-    border-radius: 50%;
-    box-shadow: 0 0 10px white;
-    opacity: 0.8;
-    animation: twinkle 2s infinite alternate;
+.unit{
+margin-right:8px;
+display:inline-block;
 }
 
-@keyframes twinkle {
-    from { opacity: 0.2; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1.2); }
+
+
+small{
+display:block;
+margin-top:18px;
+font-size:1rem;
+color:#5c7461;
 }
 
-/* parti parti */
-.particle {
-    position: absolute;
-    font-size: 22px;
-    opacity: 0.85;
-    cursor: pointer;
-    animation: float 6s ease-in-out infinite;
+
+
+/* sparkles */
+.sparkle{
+position:absolute;
+width:8px;
+height:8px;
+background:white;
+border-radius:50%;
+
+box-shadow:
+0 0 12px white,
+0 0 22px rgba(255,255,255,.8);
+
+animation:twinkle 2s infinite alternate;
 }
 
-@keyframes float {
-    0%,100% { transform: translateY(0px); }
-    50% { transform: translateY(-25px); }
+@keyframes twinkle{
+from{
+opacity:.3;
+transform:scale(.7);
+}
+to{
+opacity:1;
+transform:scale(1.4);
+}
 }
 
-/* travesura */
-.confetti {
-    position: absolute;
-    font-size: 16px;
-    color: rgba(255,255,255,0.9);
-    text-shadow: 0 0 8px rgba(255,255,255,0.6);
-    animation: fall 3s linear forwards;
+
+
+/* sapitos */
+.particle{
+position:absolute;
+font-size:30px;
+opacity:.9;
+cursor:pointer;
+
+filter:
+drop-shadow(0 0 10px rgba(255,255,255,.4));
+
+animation:float 6s ease-in-out infinite;
 }
 
-@keyframes fall {
-    from { transform: translateY(-10vh) rotate(0deg); }
-    to { transform: translateY(110vh) rotate(360deg); }
+@keyframes float{
+0%,100%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-28px);
+}
 }
 
-.fade-out {
-    transform: scale(1.1);
-    opacity: 0;
+
+
+/* confetti */
+.confetti{
+position:absolute;
+font-size:18px;
+opacity:.95;
+animation:fall 3s linear forwards;
 }
+
+@keyframes fall{
+from{
+transform:translateY(-10vh) rotate(0deg);
+}
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+
+.fade-out{
+transform:scale(1.08);
+opacity:0;
+}
+
 </style>
-
 </head>
-
 <body>
 
+
+
 <div class="container" id="card">
-    <h1>🚧 En construcción 💖<br>Disculpe las molestias</h1>
-    <div id="countdown"></div>
-    <small>Hasta el 29 de abril a las 12:00 AM</small>
+
+<h1>
+Obra en construcción <br> Patos trabajando 🏗️
+
+</h1>
+
+<div id="countdown"></div>
+
+<small>Hasta el 29 de abril a las 12:00 AM</small>
+
 </div>
+
+
 
 <script>
 
-const targetDate = new Date(2026, 3, 29, 0,0, 0).getTime();
-const countdownElement = document.getElementById("countdown");
-const card = document.getElementById("card");
+const targetDate=
+new Date(2026,3,29,0,0,0).getTime();
 
-/* rallos y senteyas */
-function createSparkles() {
-    for (let i = 0; i < 40; i++) {
-        const s = document.createElement("div");
-        s.classList.add("sparkle");
+const countdownElement=
+document.getElementById("countdown");
 
-        s.style.left = Math.random() * 100 + "vw";
-        s.style.top = Math.random() * 100 + "vh";
+const card=
+document.getElementById("card");
 
-        document.body.appendChild(s);
-    }
+
+
+function createSparkles(){
+
+for(let i=0;i<50;i++){
+
+const s=document.createElement("div");
+s.classList.add("sparkle");
+
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(s);
+
 }
+
+}
+
 createSparkles();
 
-/* muekekekkeke */
-function createParticles() {
-    const shapes = ["🐸","🦆"];
 
-    for (let i = 0; i < 30; i++) {
-        const p = document.createElement("div");
-        p.classList.add("particle");
-        p.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
 
-        p.style.left = Math.random() * window.innerWidth + "px";
-        p.style.top = Math.random() * window.innerHeight + "px";
+function createParticles(){
 
-        p.addEventListener("mouseenter", () => moveParticle(p));
-        p.addEventListener("click", () => moveParticle(p));
+const shapes=["🐸","🦆"];
 
-        document.body.appendChild(p);
-    }
+for(let i=0;i<30;i++){
+
+const p=document.createElement("div");
+
+p.classList.add("particle");
+
+p.innerHTML=
+shapes[Math.floor(Math.random()*shapes.length)];
+
+p.style.left=
+Math.random()*window.innerWidth+"px";
+
+p.style.top=
+Math.random()*window.innerHeight+"px";
+
+p.addEventListener(
+"mouseenter",
+()=>moveParticle(p)
+);
+
+p.addEventListener(
+"click",
+()=>moveParticle(p)
+);
+
+document.body.appendChild(p);
+
 }
 
-function moveParticle(p) {
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight;
+}
 
-    p.style.transition = "all 0.6s ease";
-    p.style.left = x + "px";
-    p.style.top = y + "px";
+
+function moveParticle(p){
+
+const x=Math.random()*window.innerWidth;
+const y=Math.random()*window.innerHeight;
+
+p.style.transition="all .6s ease";
+
+p.style.left=x+"px";
+p.style.top=y+"px";
+
 }
 
 createParticles();
 
-/* asteriksimo */
-function createConfetti() {
-    const hearts = ["♡","♡","♡","✧"];
 
-    for (let i = 0; i < 80; i++) {
-        const confetti = document.createElement("div");
-        confetti.classList.add("confetti");
 
-        confetti.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.fontSize = (12 + Math.random() * 18) + "px";
-        confetti.style.animationDuration = (2 + Math.random() * 2) + "s";
 
-        document.body.appendChild(confetti);
+/* luciernagas */
+setInterval(()=>{
 
-        setTimeout(() => confetti.remove(), 3000);
-    }
+const glow=document.createElement("div");
+
+glow.style.position="absolute";
+glow.style.width="10px";
+glow.style.height="10px";
+glow.style.borderRadius="50%";
+glow.style.background="#fffccf";
+glow.style.boxShadow="0 0 20px #fffccf";
+
+glow.style.left=
+Math.random()*100+"vw";
+
+glow.style.top="100vh";
+
+glow.style.transition="5s linear";
+
+document.body.appendChild(glow);
+
+setTimeout(()=>{
+glow.style.transform=
+"translateY(-120vh)";
+glow.style.opacity="0";
+},50);
+
+setTimeout(()=>{
+glow.remove();
+},5000);
+
+},800);
+
+
+
+
+function createConfetti(){
+
+const hearts=["♡","✧","✿","❀"];
+
+for(let i=0;i<80;i++){
+
+const c=document.createElement("div");
+
+c.classList.add("confetti");
+
+c.innerHTML=
+hearts[Math.floor(Math.random()*hearts.length)];
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.fontSize=
+(14+Math.random()*18)+"px";
+
+c.style.animationDuration=
+(2+Math.random()*2)+"s";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+c.remove();
+},3000);
+
 }
 
-/* senosvieneee */
-const countdown = setInterval(function() {
+}
 
-    const now = new Date().getTime();
-    const distance = targetDate - now;
 
-    if (distance <= 0) {
-        clearInterval(countdown);
 
-        createConfetti();
-        card.classList.add("fade-out");
+/* countdown */
+const countdown=
+setInterval(function(){
 
-        setTimeout(() => {
-            window.location.href = "https://www.canva.com/design/DAHC2bnlY_c/KbaIUkdHP8yxo15xxm099A/edit?ui=eyJBIjp7fX0";
-        }, 1500);
+const now=
+new Date().getTime();
 
-        return;
-    }
+const distance=
+targetDate-now;
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    countdownElement.innerHTML =
-        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+if(distance<=0){
 
-}, 1000);
+clearInterval(countdown);
+
+createConfetti();
+
+card.classList.add("fade-out");
+
+setTimeout(()=>{
+window.location.href=
+"https://canva.link/cucuyoyo";
+},1500);
+
+return;
+}
+
+
+const days=
+Math.floor(distance/(1000*60*60*24));
+
+const hours=
+Math.floor(
+(distance%(1000*60*60*24))/
+(1000*60*60)
+);
+
+const minutes=
+Math.floor(
+(distance%(1000*60*60))/
+(1000*60)
+);
+
+const seconds=
+Math.floor(
+(distance%(1000*60))/1000
+);
+
+
+
+countdownElement.innerHTML=
+`<span class="unit">${days}d</span>
+ <span class="unit">${hours}h</span>
+ <span class="unit">${minutes}m</span>
+ <span class="unit">${seconds}s</span>`;
+
+},1000);
 
 </script>
 
